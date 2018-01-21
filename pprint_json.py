@@ -15,6 +15,6 @@ def pretty_print_json(json_content):
 if __name__ == '__main__':
     try:
         json_filepath = sys.argv[1]
-    except Exception as Error1:
+    except IndexError as Error1:
         json_filepath = input("Input the path to file ")
     pretty_print_json(load_data(json_filepath))
