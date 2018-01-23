@@ -3,11 +3,8 @@ import sys
 
 
 def load_data(json_filepath):
-    try:
-        with open(json_filepath) as json_file:
-            return json.load(json_file)
-    except IOError:
-        print("File not found")
+    with open(json_filepath) as json_file:
+        return json.load(json_file)
 
 
 def pretty_print_json(json_content):
@@ -23,7 +20,8 @@ def pretty_print_json(json_content):
 
 if __name__ == '__main__':
     try:
-        json_filepath = sys.argv[1]
+        pretty_print_json(load_data(sys.argv[1]))
     except IndexError:
-        json_filepath = input("Input the path to file ")
-    pretty_print_json(load_data(json_filepath))
+        print("No file name specified")  
+    except IOError as err2:
+        print(err2)
